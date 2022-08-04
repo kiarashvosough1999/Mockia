@@ -28,23 +28,41 @@
 import Foundation
 import XCTest
 
+/// Action manager of mock objects
 public final class MockActions<Action> where Action: Equatable {
     
+    /// Actions which should be specified on the units and mocks are expected to fulfill them
     private var expected: [Action]
+    
+    /// Actions which are registred inside mocks to respond to the expectation
     private var factual: [Action]
     
+    /// A closure which calls when the verify method is called to ignore the factual which are not needed in specific unit.
     private var shouldIgnoreAction: ((Action) -> Bool)
     
+    /// Use the this initializer to specify the expectatios and ignoring factuals
+    /// - Parameters:
+    ///   - expected: Actions which should be specified on the units and mocks are expected to fulfill them
+    ///   - shouldIgnoreAction: A closure which calls when the verify method is called to ignore the factual which are not needed in specific unit.
     public init(expected: [Action], shouldIgnoreAction: @escaping ((Action) -> Bool) = { _ in false }) {
         self.expected = expected
-        self.factual = []
         self.shouldIgnoreAction = shouldIgnoreAction
+        self.factual = []
     }
     
+    /// Register a factual action
+    ///
+    /// - Parameter action: A factual action
     internal func register(_ action: Action) {
         factual.append(action)
     }
     
+    /// Verify that expectation and factual actions are equal or not,
+    /// If all the expectations are not fulfilled, A XCTFail arises.
+    ///
+    /// - Parameters:
+    ///   - file: File name of test
+    ///   - line: Line number of test
     internal func verify(file: StaticString, line: UInt) {
         let nonIgnoredfactual = factual.filter { shouldIgnoreAction($0) == false }
         if nonIgnoredfactual == expected { return }
