@@ -27,16 +27,30 @@
 
 import Foundation
 
+/// mock objects should conform to this protocol in order to setup expectations and verify them
 public protocol Mock {
 
     associatedtype Action: Equatable
-
+    
+    /// Action manager of mock object
     var actions: MockActions<Action> { get }
     
+    /// register factual actions inside mock object
+    /// Do not call this method outside the mock object.
+    /// Factual actions should only be registered inside mock objects
+    ///
+    /// - Parameter action: action which is excpected to be happened
     func register(_ action: Action)
+    
+    /// Call to verify the expectations
+    ///
+    /// - Parameters:
+    ///   - file: file name of test
+    ///   - line: line number of test
     func verify(file: StaticString, line: UInt)
 }
 
+// Optional Methods
 extension Mock {
     
     public func register(_ action: Action) {

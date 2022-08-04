@@ -9,7 +9,7 @@
 [![Twitter](https://img.shields.io/badge/Twitter-@Vosough_k-blue.svg?style=flat-square)](https://twitter.com/vosough_k)
 [![Linkedin](https://img.shields.io/badge/Linkedin-KiarashVosough-blue.svg?style=flat-square)](https://www.linkedin.com/in/kiarashvosough/)
 
-Mockito: Easy Mocking in Swift
+Mockia: Easy Mocking in Swift
 
 - [Features](#features)
 - [Requirements](#requirements)
