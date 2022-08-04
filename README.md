@@ -6,7 +6,8 @@
 ![Swift](https://img.shields.io/badge/Swift-5.1_5.2_5.3_5.4_5.5_5.6-Orange?style=flat-square)
 ![Platforms](https://img.shields.io/badge/Platforms-macOS_iOS_tvOS_watchOS-Green?style=flat-square)
 ![SPM](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange?style=flat-square)
-![Twitter](https://img.shields.io/badge/twitter-@Vosough_k-blue.svg?style=flat-square)
+[![Twitter](https://img.shields.io/badge/Twitter-@Vosough_k-blue.svg?style=flat-square)](https://twitter.com/vosough_k)
+[![Linkedin](https://img.shields.io/badge/Linkedin-KiarashVosough-blue.svg?style=flat-square)](https://www.linkedin.com/in/kiarashvosough/)
 
 Mockito: Easy Mocking in Swift
 
