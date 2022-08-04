@@ -2,7 +2,7 @@ name: Swift
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "update-github-action" ]
   pull_request:
     branches: [ "master" ]
 
@@ -12,8 +12,12 @@ jobs:
     runs-on: macos-latest
 
     steps:
+    - uses: swift-actions/setup-swift@v1
     - uses: actions/checkout@v3
     - name: Build
       run: swift build -v
+    - name: Build Docc
+      run:  |
+         swift package --allow-writing-to-directory ./docs generate-documentation --disable-indexing --transform-for-static-hosting --hosting-base-path Mockia --output-path ./docs --target Mockia
     - name: Run tests
       run: swift test -v
