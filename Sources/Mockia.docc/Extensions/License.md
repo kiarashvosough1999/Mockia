@@ -1,6 +1,6 @@
 # License
 
-Mockia Distribution License.
+`Mockia` Distribution License.
 
 ## MITLicense
 

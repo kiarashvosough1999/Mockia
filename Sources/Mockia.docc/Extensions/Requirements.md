@@ -1,6 +1,6 @@
 # Requirements
 
-Minimum requirment of swift and platforms version.
+Minimum required version of swift and platforms.
 
 | Platform | Minimum Swift Version | Installation | Status |
 | --- | --- | --- | --- |

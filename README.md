@@ -9,7 +9,7 @@
 [![Twitter](https://img.shields.io/badge/Twitter-@Vosough_k-blue.svg?style=flat-square)](https://twitter.com/vosough_k)
 [![Linkedin](https://img.shields.io/badge/Linkedin-KiarashVosough-blue.svg?style=flat-square)](https://www.linkedin.com/in/kiarashvosough/)
 
-Mockia: Easy Mocking in Swift
+Mockia: Easy Handling Mock's Expectations in Swift
 
 - [Features](#features)
 - [Requirements](#requirements)
@@ -46,7 +46,6 @@ dependencies: [
     .package(url: "https://github.com/kiarashvosough1999/Mockia.git", .upToNextMajor(from: "0.0.1"))
 ]
 ```
-
 
 ## Usage
 
