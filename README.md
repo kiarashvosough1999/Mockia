@@ -1,7 +1,8 @@
 
 <p align="center">
-  <img src="https://github.com/kiarashvosough1999/Mockia/blob/master/resources/Mockia.png">
+  <img src="https://github.com/kiarashvosough1999/Mockia/blob/master/Sources/Mockia.docc/Resources/Mockia.png">
 </p>
+
 
 ![Swift](https://img.shields.io/badge/Swift-5.1_5.2_5.3_5.4_5.5_5.6-Orange?style=flat-square)
 ![Platforms](https://img.shields.io/badge/Platforms-macOS_iOS_tvOS_watchOS-Green?style=flat-square)
@@ -17,6 +18,7 @@ Mockia: Easy Handling Mock's Expectations in Swift
 - [Usage](#Usage)
 - [Contributors](#Contributors)
 - [License](#license)
+- [Documented With Docc](https://kiarashvosough1999.github.io/Mockia/documentation/mockia/)
 
 ## Features
 
