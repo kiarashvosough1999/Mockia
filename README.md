@@ -22,9 +22,9 @@ Mockia: Easy Handling Mock's Expectations in Swift
 
 ## Features
 
-- [x] Set Action For Mocks
-- [x] Ignore Actions
-- [x] Verify Actions
+- [x] Set Factual Actions Inside Mocks
+- [x] Ignore Factual Actions
+- [x] Verify Expected Actions
 
 ## Requirements
 
@@ -41,7 +41,7 @@ Mockia: Easy Handling Mock's Expectations in Swift
 
 The [Swift Package Manager](https://www.swift.org/package-manager) is a tool for automating the distribution of Swift code and is integrated into the swift compiler.
 
-Once you have your Swift package set up, adding Mockia as a dependency is as easy as adding it to the dependencies value of your Package.swift.
+Once you have your Swift package set up, adding `Mockia` as a dependency is as easy as adding it to the dependencies value of your Package.swift.
 
 ```swift
 dependencies: [
@@ -59,4 +59,4 @@ Feel free to share your ideas or any other problems. Pull requests are welcomed.
 
 ## License
 
-CocoAttributedStringBuilder is released under an MIT license. See [LICENSE](https://github.com/kiarashvosough1999/Mockia/blob/master/LICENSE) for more information.
+`Mockia` is released under an MIT license. See [LICENSE](https://github.com/kiarashvosough1999/Mockia/blob/master/LICENSE) for more information.

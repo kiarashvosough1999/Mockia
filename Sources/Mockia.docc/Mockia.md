@@ -4,10 +4,10 @@ Easy Handling Mock's internal Expectations in Swift.
 
 ## Overview
 
-Ever tried to pu expectations inside the mock object? It is not best practice to directly put `XCAssert` inside mocks and check somthing on every unit test.
+Ever tried to put expectations inside the mocks? It is not the best practice to directly put `XCAssert` inside mocks and check something on each unit test.
 
-What if on one unit everythings change and the asseration fails and not valid anymore?
+What if on one unit everythings change and the assertion fails and no longer valid?
 
-With `Mockia` can enable you to put expectations inside mock object and verify them the way unit test requires. You can set factual actions inside your mocks and expect them in the unit which is being tested. Maybe on another unit you don't want some factual, you can easily ignore them.
+`Mockia` enables you to put expectations inside mocks and verify them the way unit test requires. You can set factual actions inside your mocks and expect them in the unit which is being tested. Maybe on another unit you don't want some factual, you can easily ignore them.
 
 ![](Mockia.png)
