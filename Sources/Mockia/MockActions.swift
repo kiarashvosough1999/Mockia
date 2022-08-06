@@ -28,19 +28,20 @@
 import Foundation
 import XCTest
 
-/// Action manager of mock objects
+/// Action manager of mocks
 public final class MockActions<Action> where Action: Equatable {
     
     /// Actions which should be specified on the units and mocks are expected to fulfill them
     private var expected: [Action]
     
-    /// Actions which are registred inside mocks to respond to the expectation
+    /// Actions which are registred inside mocks to respond to the expectations
     private var factual: [Action]
     
     /// A closure which calls when the verify method is called to ignore the factual which are not needed in specific unit.
     private var shouldIgnoreAction: ((Action) -> Bool)
     
-    /// Use the this initializer to specify the expectatios and ignoring factuals
+    /// Use the this initializer to specify the expectations and ignoring factuals callback.
+    ///
     /// - Parameters:
     ///   - expected: Actions which should be specified on the units and mocks are expected to fulfill them
     ///   - shouldIgnoreAction: A closure which calls when the verify method is called to ignore the factual which are not needed in specific unit.

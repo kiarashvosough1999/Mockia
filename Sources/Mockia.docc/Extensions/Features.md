@@ -2,6 +2,6 @@
 
 Some of `Mockia` Features are listed here:
 
-- [x] Set Action For Mocks
-- [x] Ignore Actions
-- [x] Verify Actions
+- [x] Set Factual Actions Inside Mocks
+- [x] Ignore Factual Actions
+- [x] Verify Expected Actions
