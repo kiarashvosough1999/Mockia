@@ -2,7 +2,7 @@ name: Swift
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "add-docc-build-to-action" ]
   pull_request:
     branches: [ "master" ]
 
@@ -12,9 +12,25 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: swift-actions/setup-swift@v1
-    - uses: actions/checkout@v3
+    - name: update swift
+      uses: swift-actions/setup-swift@v1
+
+    - name: checkout
+      uses: actions/checkout@v3
+
     - name: Build
       run: swift build -v
+
     - name: Run tests
       run: swift test -v
+
+    - name: Build Documents
+      run: pwd
+      run: swift package --allow-writing-to-directory ./docs generate-documentation --disable-indexing --transform-for-static-hosting --hosting-base-path Mockia --output-path ./docs --target Mockia
+    
+    # - name: Commit Changes
+    #   uses: EndBug/add-and-commit@v9
+    #   with:
+    #     message: update document
+    #     committer_name: GitHub Actions
+    #     committer_email: actions@github.com
