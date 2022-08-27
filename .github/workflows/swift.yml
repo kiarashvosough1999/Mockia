@@ -26,8 +26,8 @@ jobs:
 
     - name: Build Documents
       run: |
-      pwd
-      swift package --allow-writing-to-directory ./docs generate-documentation --disable-indexing --transform-for-static-hosting --hosting-base-path Mockia --output-path ./docs --target Mockia
+        pwd
+        swift package --allow-writing-to-directory ./docs generate-documentation --disable-indexing --transform-for-static-hosting --hosting-base-path Mockia --output-path ./docs --target Mockia
     
     # - name: Commit Changes
     #   uses: EndBug/add-and-commit@v9
