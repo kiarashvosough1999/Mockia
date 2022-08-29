@@ -2,7 +2,7 @@ name: Swift
 
 on:
   push:
-    branches: [ "master", "fix-running-docc-on-merged" ]
+    branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
 
