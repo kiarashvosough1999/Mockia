@@ -18,6 +18,14 @@ jobs:
       with:
        repository: ${{ github.event.pull_request.head.repo.full_name }}
        ref: ${{ github.event.pull_request.head.ref }}
+    
+    - name: Build
+      run: |
+        swift build -v
+
+    - name: Run tests
+      run: |
+        swift test -v
 
     - name: Build Documents
       run: |
