@@ -1,6 +1,8 @@
 name: master_workflow
 
 on:
+  push:
+    branches: [ "add-other-way-to-build-docc" ]
   pull_request:
     branches: [ "master" ]
 
@@ -15,9 +17,9 @@ jobs:
 
     - name: checkout
       uses: actions/checkout@v3
-      with:
-       repository: ${{ github.event.pull_request.head.repo.full_name }}
-       ref: ${{ github.event.pull_request.head.ref }}
+      # with:
+       # repository: ${{ github.event.pull_request.head.repo.full_name }}
+       # ref: ${{ github.event.pull_request.head.ref }}
     
     - name: Build
       run: |
@@ -29,7 +31,20 @@ jobs:
 
     - name: Build Documents
       run: |
-        swift package --allow-writing-to-directory ./docs generate-documentation --disable-indexing --transform-for-static-hosting --hosting-base-path Mockia --output-path ./docs --target Mockia
+        mkdir .doc_build
+
+        build_path=".doc_build"
+        docc_build=".doc_build/Build/Products/Debug-iphonesimulator/DarkRoom.doccarchive"
+        swiftspm=".swiftpm"
+        docs="docs"
+
+        xcodebuild docbuild -scheme DarkRoom -derivedDataPath $build_path -destination 'platform=iOS Simulator,name=iPhone 13'
+
+        $(xcrun --find docc) process-archive transform-for-static-hosting $docc_build --output-path $docs --hosting-base-path DarkRoom
+
+        $echo "DocC Build Succeed"
+        rm -rf $build_path
+        rm -rf $swiftspm
     
     - name: Show Changes After Building Docc
       run: |
