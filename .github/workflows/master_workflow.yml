@@ -34,12 +34,17 @@ jobs:
 
     - name: Build Documents
       run: |
+        build_path=".doc_build"
+
         mkdir .doc_build
 
-        build_path=".doc_build"
         docc_executable_path=$(xcrun --find docc)
         swiftspm=".swiftpm"
         docs="docs"
+
+        rm -rf $docs
+        mkdir $docs
+
         package_name=$(basename "$PWD")
 
         xcodebuild docbuild -scheme $package_name -derivedDataPath $build_path -destination 'platform=iOS Simulator,name=iPhone 13'
