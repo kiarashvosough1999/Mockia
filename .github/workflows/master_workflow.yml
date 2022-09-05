@@ -31,17 +31,28 @@ jobs:
         mkdir .doc_build
 
         build_path=".doc_build"
-        docc_build=".doc_build/Build/Products/Debug-iphonesimulator/DarkRoom.doccarchive"
+        docc_executable_path=$(xcrun --find docc)
         swiftspm=".swiftpm"
         docs="docs"
+        package_name=$(basename "$PWD")
 
-        xcodebuild docbuild -scheme Mockia -derivedDataPath $build_path -destination 'platform=iOS Simulator,name=iPhone 13'
+        xcodebuild docbuild -scheme $package_name -derivedDataPath $build_path -destination 'platform=iOS Simulator,name=iPhone 13'
 
-        $(xcrun --find docc) process-archive transform-for-static-hosting $docc_build --output-path $docs --hosting-base-path Mockia
+        echo "DocC Archeive Build Succeed"
 
-        $echo "DocC Build Succeed"
+        docc_build=$(find . -regex '.*/[^/]*.doccarchive')
+
+        $docc_executable_path process-archive transform-for-static-hosting $docc_build --output-path $docs --hosting-base-path $package_name
+
+        echo "DocC Static Site Generator Succeed"
+
         rm -rf $build_path
+
+        echo "Removing $build_path"
+
         rm -rf $swiftspm
+
+        echo "Removing $swiftspm"
     
     - name: Show Changes After Building Docc
       run: |
