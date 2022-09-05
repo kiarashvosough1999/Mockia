@@ -35,9 +35,9 @@ jobs:
         swiftspm=".swiftpm"
         docs="docs"
 
-        xcodebuild docbuild -scheme DarkRoom -derivedDataPath $build_path -destination 'platform=iOS Simulator,name=iPhone 13'
+        xcodebuild docbuild -scheme Mockia -derivedDataPath $build_path -destination 'platform=iOS Simulator,name=iPhone 13'
 
-        $(xcrun --find docc) process-archive transform-for-static-hosting $docc_build --output-path $docs --hosting-base-path DarkRoom
+        $(xcrun --find docc) process-archive transform-for-static-hosting $docc_build --output-path $docs --hosting-base-path Mockia
 
         $echo "DocC Build Succeed"
         rm -rf $build_path
