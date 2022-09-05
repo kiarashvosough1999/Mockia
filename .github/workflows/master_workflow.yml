@@ -1,8 +1,6 @@
 name: master_workflow
 
 on:
-  push:
-    branches: [ "add-other-way-to-build-docc" ]
   pull_request:
     branches: [ "master" ]
 
@@ -22,9 +20,17 @@ jobs:
 
     - name: checkout
       uses: actions/checkout@v3
-      # with:
-       # repository: ${{ github.event.pull_request.head.repo.full_name }}
-       # ref: ${{ github.event.pull_request.head.ref }}
+      with:
+       repository: ${{ github.event.pull_request.head.repo.full_name }}
+       ref: ${{ github.event.pull_request.head.ref }}
+
+    - name: Build
+      run: |
+        swift build -v
+
+    - name: Run tests
+      run: |
+        swift test -v
 
     - name: Build Documents
       run: |
