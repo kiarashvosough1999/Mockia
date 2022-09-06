@@ -27,6 +27,7 @@ jobs:
     - name: Build On ${{ matrix.name }}
       continue-on-error: false
       run: |
+        xcversion simulators --install='iOS ${{ matrix.xcode }}'
         xcodebuild -scheme $Package_Name -destination '${{ matrix.destination }}'
     
     strategy:
@@ -39,6 +40,7 @@ jobs:
           #   name: "iPhone 12, iOS 14.5, Xcode 12.5.1"
 
           - destination: 'Platform=iOS Simulator,name=iPhone 13,OS=15.5'
+            iOSVer: "15.5"
             runsOn: macos-12
             xcode: "Xcode_13.4.1.app"
             name: "iPhone 13, iOS 15.5, Xcode 13.4.1"
