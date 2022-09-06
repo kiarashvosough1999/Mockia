@@ -17,27 +17,30 @@ concurrency:
 jobs:
   build:
     runs-on: ${{ matrix.runsOn }}
-    env:
-      DEVELOPER_DIR: "/Applications/${{ matrix.xcode }}/Contents/Developer"
+    runs-on: macos-12
+    # env:
+      # DEVELOPER_DIR: "/Applications/${{ matrix.xcode }}/Contents/Developer"
 
     steps:
     - name: checkout
       uses: actions/checkout@v3
 
-    - name: Build On ${{ matrix.name }}
+    # - name: Build On ${{ matrix.name }}
+    - name: Build 
       continue-on-error: false
       run: |
-        xcodebuild -scheme $Package_Name -showdestinations
-        xcodebuild -scheme $Package_Name -destination '${{ matrix.destination }}'
+        # xcodebuild -scheme $Package_Name -showdestinations
+        # xcodebuild -scheme $Package_Name -destination '${{ matrix.destination }}'
+        xcodebuild -scheme $Package_Name -destination 'Platform=iOS Simulator,name=iPhone 13'
     
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - destination: 'Platform=iOS Simulator,OS=15.5,name=iPhone 13 Pro'
-            runsOn: macos-12
-            xcode: "Xcode_13.4.1.app"
-            name: "iPhone 13, iOS 15.5, Xcode 13.4.1"
+    # strategy:
+    #   fail-fast: false
+    #   matrix:
+    #     include:
+    #       - destination: 'Platform=iOS Simulator,OS=15.5,name=iPhone 13 Pro'
+    #         runsOn: macos-12
+    #         xcode: "Xcode_13.4.1.app"
+    #         name: "iPhone 13, iOS 15.5, Xcode 13.4.1"
 
   unit_test:
     runs-on: macos-12
