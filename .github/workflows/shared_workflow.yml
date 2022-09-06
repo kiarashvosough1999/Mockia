@@ -27,7 +27,7 @@ jobs:
     - name: Build On ${{ matrix.name }}
       continue-on-error: false
       run: |
-        xcversion simulators --install='iOS ${{ matrix.xcode }}'
+        xcversion simulators --install='iOS ${{ matrix.iOSVer }}'
         xcodebuild -scheme $Package_Name -destination '${{ matrix.destination }}'
     
     strategy:
