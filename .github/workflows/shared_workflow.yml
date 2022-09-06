@@ -9,6 +9,7 @@ on:
       - '**'
 env:
   Package_Name: Mockia
+
 concurrency: 
   group: ${{ github.ref_name }}
   cancel-in-progress: true
@@ -32,12 +33,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - destination: 'Platform=IOS Simulator,name=iPhone 12,OS=14.5'
+          - destination: 'Platform=iOS Simulator,name=iPhone 12,OS=14.5'
             runsOn: macos-11
             xcode: "Xcode_12.5.1.app"
             name: "iPhone 12, iOS 14.5, Xcode 12.5.1"
 
-          - destination: 'Platform=IOS Simulator,name=iPhone 13,OS=15.2'
+          - destination: 'Platform=iOS Simulator,name=iPhone 13,OS=15.2'
             runsOn: macos-12
             xcode: "Xcode_13.2.1.app"
             name: "iPhone 13, iOS 15.2, Xcode 13.2.1"
