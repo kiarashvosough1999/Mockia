@@ -27,7 +27,7 @@ jobs:
       run: |
         # xcodebuild -scheme $Package_Name -showdestinations
         # xcodebuild -scheme $Package_Name -destination '${{ matrix.destination }}'
-        xcodebuild -scheme 'Mockia' -destination 'platform=iOS Simulator,name=iPhone 13,OS=15.5' build
+        xcodebuild -scheme 'Mockia' -destination 'platform=iOS Simulator,name=iPhone 13' build
     
     # strategy:
     #   fail-fast: false
