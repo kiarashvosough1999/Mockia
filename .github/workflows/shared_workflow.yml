@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ${{ matrix.runsOn }}
+    # runs-on: ${{ matrix.runsOn }}
     runs-on: macos-12
     # env:
       # DEVELOPER_DIR: "/Applications/${{ matrix.xcode }}/Contents/Developer"
