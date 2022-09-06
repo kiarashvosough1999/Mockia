@@ -9,6 +9,9 @@ on:
       - '**'
 env:
   Package_Name: DarkRoom
+concurrency: 
+  group: ${{ github.ref_name }}
+  cancel-in-progress: true
 jobs:
   build:
     runs-on: ${{ matrix.runsOn }}
