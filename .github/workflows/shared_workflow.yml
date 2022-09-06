@@ -12,6 +12,7 @@ env:
 concurrency: 
   group: ${{ github.ref_name }}
   cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ${{ matrix.runsOn }}
@@ -25,7 +26,7 @@ jobs:
     - name: Build On ${{ matrix.name }}
       continue-on-error: false
       run: |
-        xcodebuild -scheme $Package_Name -destination ${{ matrix.destination }} -quiet
+        xcodebuild -scheme $Package_Name -destination "${{ matrix.destination }}" -quiet
     
     strategy:
       fail-fast: false
