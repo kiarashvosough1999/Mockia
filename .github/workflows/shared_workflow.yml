@@ -32,17 +32,17 @@ jobs:
       matrix:
         include:
           - destination: "Platform=IOS Simulator,name=iPhone 11, OS=13.7"
-            runs-on: macos-11
+            runsOn: macos-11
             xcode: "Xcode_11.7.app"
             name: "iPhone 11, iOS 13.7, Xcode 11.7"
           
           - destination: "Platform=IOS Simulator,name=iPhone 12, OS=14.5"
-            runs-on: macos-11
+            runsOn: macos-11
             xcode: "Xcode_12.5.1.app"
             name: "iPhone 12, iOS 14.5, Xcode 12.5.1"
           
           - destination: "Platform=IOS Simulator,name=iPhone 13, OS=15.2"
-            runs-on: macos-11
+            runsOn: macos-11
             xcode: "Xcode_13.2.1.app"
             name: "iPhone 13, iOS 15.2, Xcode 13.2.1"
 
