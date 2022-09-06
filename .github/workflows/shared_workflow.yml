@@ -8,7 +8,7 @@ on:
     branches:
       - '**'
 env:
-  Package_Name: DarkRoom
+  Package_Name: Mockia
 concurrency: 
   group: ${{ github.ref_name }}
   cancel-in-progress: true
