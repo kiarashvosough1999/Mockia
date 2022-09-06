@@ -33,14 +33,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # - destination: 'Platform=iOS Simulator,name=iPhone 11,OS=14.5'
-          #   runsOn: macos-11
-          #   xcode: "Xcode_12.5.1.app"
-          #   name: "iPhone 12, iOS 14.5, Xcode 12.5.1"
-
           - destination: 'Platform=iOS Simulator,name=iPhone 13,OS=latest'
             runsOn: macos-12
-            xcode: "Xcode_13.2.1.app"
+            xcode: "Xcode_13.4.1.app"
             name: "iPhone 13, iOS 15.5, Xcode 13.2.1"
 
   unit_test:
