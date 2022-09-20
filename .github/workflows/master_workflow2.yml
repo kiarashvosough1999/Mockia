@@ -6,7 +6,7 @@ on:
       - '**'
 
 env:
-  DocC_Generated_Static_Site_Upload_Name: github-pages
+  DocC_Generated_Static_Site_Upload_Name: docC_generated_site_uploaded_name
   Swift_SPM_Build_Path: .swiftspm
   Jekyll_Static_Site_Destination_Path: ../docc_static_site/_site
 
@@ -100,11 +100,11 @@ jobs:
 
         echo "DocC Static Site Generated, Succeed"
 
-    - name: Upload DocC Static Site
-      uses: actions/upload-pages-artifact@v0
-      with:
-        path: $DocC_Static_Site_Build_Ouptput_Path
-        retention-days: 1
+    - name: Archive DocC Artifact
+      shell: bash
+      run: |
+        gtar --dereference --hard-dereference --directory "$DocC_Static_Site_Build_Ouptput_Path" -cvf "$RUNNER_TEMP/$DocC_Generated_Static_Site_Upload_Name.tar" --exclude=.git --exclude=.github .
+        echo ${{ runner.temp }}/$DocC_Generated_Static_Site_Upload_Name.tar
   
   # build_deploy_site:
   #   needs: build_docC
