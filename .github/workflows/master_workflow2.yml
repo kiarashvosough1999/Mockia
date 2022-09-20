@@ -92,9 +92,9 @@ jobs:
         echo "DocC Archeive Build Succeed\n"
         Docc_Generated_Archive_Path=$(find . -regex '.*/[^/]*.doccarchive')
 
-        # $DocC_Find_Executable_Path process-archive transform-for-static-hosting $Docc_Generated_Archive_Path --output-path $DocC_Static_Site_Build_Ouptput_Path --hosting-base-path $Package_Name
+        $DocC_Find_Executable_Path process-archive transform-for-static-hosting $Docc_Generated_Archive_Path --output-path $DocC_Static_Site_Build_Ouptput_Path --hosting-base-path $Package_Name
 
-        # echo "DocC Static Site Generated, Succeed"
+        echo "DocC Static Site Generated, Succeed"
 
     # - name: Upload DocC Static Site
     #   uses: actions/upload-pages-artifact@v0
