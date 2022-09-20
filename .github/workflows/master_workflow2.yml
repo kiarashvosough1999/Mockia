@@ -90,30 +90,31 @@ jobs:
         xcodebuild docbuild -scheme $Package_Name -derivedDataPath $DocC_Derived_Data_Path_Build -destination 'platform=iOS Simulator,name=iPhone 13'
 
         echo "DocC Archeive Build Succeed\n"
+
         Docc_Generated_Archive_Path=$(find . -regex '.*/[^/]*.doccarchive')
 
         $DocC_Find_Executable_Path process-archive transform-for-static-hosting $Docc_Generated_Archive_Path --output-path $DocC_Static_Site_Build_Ouptput_Path --hosting-base-path $Package_Name
 
         echo "DocC Static Site Generated, Succeed"
 
-    # - name: Upload DocC Static Site
-    #   uses: actions/upload-pages-artifact@v0
-    #   with:
-    #     name: $DocC_Generated_Static_Site_Upload_Name
-    #     path: $DocC_Static_Site_Build_Ouptput_Path
-    #     retention-days: 2
+    - name: Upload DocC Static Site
+      uses: actions/upload-pages-artifact@v0
+      with:
+        name: $DocC_Generated_Static_Site_Upload_Name
+        path: $DocC_Static_Site_Build_Ouptput_Path
+        retention-days: 1
   
-  # build_deploy_site:
-  #   needs: build_docC
-  #   runs-on: ubuntu-latest
-  #   env:
-  #     Jekyll_Static_Site_Destination_Path: ./docc_static_site/_site
+  build_deploy_site:
+    needs: build_docC
+    runs-on: ubuntu-latest
+    env:
+      Jekyll_Static_Site_Destination_Path: ./docc_static_site/_site
 
-  #   stpes:
-  #   - name: Download a single artifact
-  #     uses: actions/download-artifact@v3
-  #     with:
-  #       name: $DocC_Generated_Static_Site_Upload_Name
+    stpes:
+    - name: Download a single artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: $DocC_Generated_Static_Site_Upload_Name
 
   #   - name: Build Static Site With Jekyll
   #     permissions:
