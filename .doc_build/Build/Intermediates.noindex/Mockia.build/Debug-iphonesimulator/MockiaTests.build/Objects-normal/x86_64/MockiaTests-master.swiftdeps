@@ -1,6 +1,0 @@
-version: "Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)"
-options: "e7e1afa74f12531da7c2929fcab28a7bde8c1011c9be3d5fc6b87307e307be20"
-build_start_time: [1663695508, 174741983]
-build_end_time: [1663695508, 330563068]
-inputs:
-  "/Users/kiarashvosough/Desktop/Project/Mockia/Tests/MockiaTests/MockiaTests.swift": [1659611998, 408354759]

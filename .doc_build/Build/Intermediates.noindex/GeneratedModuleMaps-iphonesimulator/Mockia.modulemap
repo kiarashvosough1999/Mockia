@@ -1,4 +1,0 @@
-module Mockia {
-header "Mockia-Swift.h"
-export *
-}

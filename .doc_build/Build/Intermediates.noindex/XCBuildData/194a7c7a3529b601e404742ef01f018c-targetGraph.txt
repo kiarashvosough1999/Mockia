@@ -1,6 +1,0 @@
-Target dependency graph (3 targets)
-Mockia in Mockia, no dependencies
-Mockia in Mockia, depends on:
-Mockia in Mockia (explicit)
-MockiaTests in Mockia, depends on:
-Mockia in Mockia (explicit)
