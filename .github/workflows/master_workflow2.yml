@@ -59,8 +59,6 @@ jobs:
     runs-on: macos-12
     env:
       DocC_Derived_Data_Path_Build: .doc_build
-      DocC_Find_Executable_Path: $(xcrun --find docc)
-      Docc_Generated_Archive_Path: $(find . -regex '.*/[^/]*.doccarchive')
       DocC_Static_Site_Build_Ouptput_Path: ../docc_static_site
     permissions:
       contents: read
@@ -89,6 +87,9 @@ jobs:
     - name: Build DocC
       run: |
         Package_Name=$(basename "$PWD")
+        DocC_Find_Executable_Path=$(xcrun --find docc)
+        Docc_Generated_Archive_Path=$(find . -regex '.*/[^/]*.doccarchive')
+
         xcodebuild docbuild -scheme $Package_Name -derivedDataPath $DocC_Derived_Data_Path_Build -destination 'platform=iOS Simulator,name=iPhone 13'
 
         echo "DocC Archeive Build Succeed"
