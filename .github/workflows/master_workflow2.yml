@@ -106,14 +106,13 @@ jobs:
         gtar --dereference --hard-dereference --directory $DocC_Static_Site_Build_Ouptput_Path -cvf "$RUNNER_TEMP/$DocC_Generated_Static_Site_Upload_Name.tar" --exclude=.git --exclude=.github .
 
     - name: Upload DocC Artifact
-      run: |
-        ls $RUNNER_TEMP
-      # uses: actions/upload-artifact@main
-      # with:
-      #   name: $DocC_Generated_Static_Site_Upload_Name
-      #   path: $RUNNER_TEMP/$DocC_Generated_Static_Site_Upload_Name.tar
-      #   retention-days: 1
-      #   if-no-files-found: error
+      uses: actions/upload-artifact@main
+      with:
+        name: $DocC_Generated_Static_Site_Upload_Name
+        # path: $RUNNER_TEMP/$DocC_Generated_Static_Site_Upload_Name.tar
+        path: ${{ runner.temp }}/docC_generated_site_uploaded_name.tar
+        retention-days: 1
+        if-no-files-found: error
   
   # build_deploy_site:
   #   needs: build_docC
