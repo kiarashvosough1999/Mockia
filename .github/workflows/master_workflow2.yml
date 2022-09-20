@@ -63,6 +63,8 @@ jobs:
       Docc_Generated_Archive_Path: $(find . -regex '.*/[^/]*.doccarchive')
       DocC_Static_Site_Build_Ouptput_Path: ../docc_static_site
       Package_Name: $(basename "$PWD")
+    permissions:
+      contents: read
 
     steps:
     - uses: maxim-lobanov/setup-xcode@v1
@@ -89,8 +91,6 @@ jobs:
         echo "DocC Static Site Generated, Succeed"
 
     - name: Upload DocC Static Site
-      permissions:
-        contents: read
       uses: actions/upload-pages-artifact@v0
       with:
         name: $DocC_Generated_Static_Site_Upload_Name
