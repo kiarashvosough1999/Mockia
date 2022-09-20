@@ -103,7 +103,7 @@ jobs:
     - name: Archive DocC Artifact
       shell: bash
       run: |
-        gtar --dereference --hard-dereference --directory $DocC_Static_Site_Build_Ouptput_Path -cvf "$RUNNER_TEMP/$DocC_Generated_Static_Site_Upload_Name.tar" --exclude=.git --exclude=.github .
+        gtar --dereference --hard-dereference --directory $DocC_Static_Site_Build_Ouptput_Path -cvf "/home/runner/work/_temp/docC_generated_site_uploaded_name.tar" --exclude=.git --exclude=.github .
 
     - name: Upload DocC Artifact
       uses: actions/upload-artifact@main
