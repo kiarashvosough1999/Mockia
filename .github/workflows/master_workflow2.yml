@@ -108,9 +108,8 @@ jobs:
     - name: Upload DocC Artifact
       uses: actions/upload-artifact@main
       with:
-        name: $DocC_Generated_Static_Site_Upload_Name
-        # path: $RUNNER_TEMP/$DocC_Generated_Static_Site_Upload_Name.tar
-        path: ${{ runner.temp }}/docC_generated_site_uploaded_name.tar
+        name: ${{ env.DocC_Generated_Static_Site_Upload_Name }}
+        path: ${{ runner.temp }}/${{ env.DocC_Generated_Static_Site_Upload_Name }}.tar
         retention-days: 1
         if-no-files-found: error
   
