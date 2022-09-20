@@ -64,12 +64,12 @@ jobs:
       contents: read
 
     steps:
-    - uses: maxim-lobanov/setup-xcode@v1
-      with:
-        xcode-version: latest-stable
+    # - uses: maxim-lobanov/setup-xcode@v1
+    #   with:
+    #     xcode-version: latest-stable
 
-    - name: update swift
-      uses: swift-actions/setup-swift@v1
+    # - name: update swift
+    #   uses: swift-actions/setup-swift@v1
 
     - name: checkout
       uses: actions/checkout@v3
