@@ -110,7 +110,8 @@ jobs:
     env:
       Jekyll_Static_Site_Destination_Path: ./docc_static_site/_site
 
-    stpes:
+    steps:
+
     - name: Download a single artifact
       uses: actions/download-artifact@v3
       with:
