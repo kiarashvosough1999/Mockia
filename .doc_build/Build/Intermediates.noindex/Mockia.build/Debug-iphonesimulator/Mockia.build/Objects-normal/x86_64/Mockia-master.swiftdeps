@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)"
+options: "495f2613ab0bb94cae809fe78a8001a50bebce59fb6ba3cf44075abfdb91f7eb"
+build_start_time: [1663695502, 588306903]
+build_end_time: [1663695508, 66648006]
+inputs:
+  "/Users/kiarashvosough/Desktop/Project/Mockia/Sources/Mockia/Mock.swift": [1662282108, 928754091]
+  "/Users/kiarashvosough/Desktop/Project/Mockia/Sources/Mockia/MockActions.swift": [1662282108, 928984642]
+  "/Users/kiarashvosough/Desktop/Project/Mockia/Sources/Mockia/Mockia.swift": [1659611938, 218277931]

@@ -92,10 +92,8 @@ jobs:
 
         xcodebuild docbuild -scheme $Package_Name -derivedDataPath $DocC_Derived_Data_Path_Build -destination 'platform=iOS Simulator,name=iPhone 13'
 
+        echo "DocC Archeive Build Succeed\n"
         echo $Docc_Generated_Archive_Path
-        echo $(ls -a)
-
-        # echo "DocC Archeive Build Succeed"
 
         # $DocC_Find_Executable_Path process-archive transform-for-static-hosting $Docc_Generated_Archive_Path --output-path $DocC_Static_Site_Build_Ouptput_Path --hosting-base-path $Package_Name
 
