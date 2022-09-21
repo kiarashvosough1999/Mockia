@@ -113,23 +113,23 @@ jobs:
         retention-days: 1
         if-no-files-found: error
   
-  # build_deploy_site:
-  #   needs: build_docC
-  #   runs-on: ubuntu-latest
-  #   env:
-  #     Jekyll_Static_Site_Destination_Path: ./docc_static_site/_site
+  build_deploy_site:
+    needs: build_docC
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      contents: read
+    env:
+      Jekyll_Static_Site_Destination_Path: ./docc_static_site/_site
 
-  #   steps:
+    steps:
 
-  #   - name: Download a single artifact
-  #     uses: actions/download-artifact@v3
-  #     with:
-  #       name: $DocC_Generated_Static_Site_Upload_Name
+    - name: Download a single artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: ${{ env.DocC_Generated_Static_Site_Upload_Name }}
 
   #   - name: Build Static Site With Jekyll
-  #     permissions:
-  #       pages: write
-  #       contents: read
   #     uses: actions/jekyll-build-pages@v1
   #     with:
   #       source: ./$DocC_Generated_Static_Site_Upload_Name
