@@ -61,8 +61,8 @@ jobs:
       pages: write
 
     env:
-      DocC_Archeive_Build_Success_Message: "${0;32}DocC Archeive Build Succeed\n${'\033[0m'}"
-      DocC_Static_Site_Generated_Success_Message: "${0;32}DocC Static Site Generated, Succeed\n${'\033[0m'}"
+      DocC_Archeive_Build_Success_Message: "\033[0;32mDocC Archeive Build Succeed\n\033[0m"
+      DocC_Static_Site_Generated_Success_Message: "\033[0;32mDocC Static Site Generated, Succeed\n\033[0m"
       DocC_Derived_Data_Path_Build: ./.doc_build
       DocC_Static_Site_Build_Ouptput_Path: "./docc_static_site"
 
@@ -140,7 +140,7 @@ jobs:
        repository: ${{ github.event.pull_request.head.repo.full_name }}
        ref: ${{ github.event.pull_request.head.ref }}
 
-    - name: Download a single artifact
+    - name: Download a DocC Generated Static Site Zipped artifact
       uses: actions/download-artifact@v3
       with:
         name: ${{ env.DocC_Generated_Static_Site_Upload_Name }}
