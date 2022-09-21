@@ -119,6 +119,7 @@ jobs:
     permissions:
       pages: write
       contents: read
+      id-token: write
 
     steps:
 
@@ -148,32 +149,21 @@ jobs:
         source: ./${{ env.DocC_Generated_Static_Site_Upload_Name }}
         destination: ./${{ env.DocC_Generated_Static_Site_Upload_Name }}/_site
 
-    - name: see result
-      run: |
-        ls
-        cd ${{ env.DocC_Generated_Static_Site_Upload_Name }}
-        cd _site
-        ls
+    - name: Upload Static Site Artifacts
+      permissions:
+        pages: write
+        contents: read
+      uses: actions/upload-pages-artifact@v0
+      with:
+        name: github-pages
+        path: ./${{ env.DocC_Generated_Static_Site_Upload_Name }}/_site
+        retention-days: 1
 
-  #   - name: Upload Static Site Artifacts
-  #     permissions:
-  #       pages: write
-  #       contents: read
-  #     uses: actions/upload-pages-artifact@v0
-  #     with:
-  #       name: github-pages
-  #       path: $Jekyll_Static_Site_Destination_Path
-  #       retention-days: 1
-
-  #   - name: Deploy
-  #     permissions:
-  #       contents: read
-  #       pages: write
-  #       id-token: write
-  #     uses: actions/deploy-pages@v1
-  #     with:
-  #       emit_telemetry: false
-  #       timeout: 600000
-  #       error_count: 10
-  #       reporting_interval: 5000
-  #       artifact_name: github-pages
+    - name: Deploy
+      uses: actions/deploy-pages@v1
+      with:
+        emit_telemetry: false
+        timeout: 600000
+        error_count: 10
+        reporting_interval: 5000
+        artifact_name: github-pages
