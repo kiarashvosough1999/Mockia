@@ -150,9 +150,6 @@ jobs:
         destination: ./${{ env.DocC_Generated_Static_Site_Upload_Name }}/_site
 
     - name: Upload Static Site Artifacts
-      permissions:
-        pages: write
-        contents: read
       uses: actions/upload-pages-artifact@v0
       with:
         name: github-pages
