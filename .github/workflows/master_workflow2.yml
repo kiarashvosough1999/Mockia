@@ -122,6 +122,12 @@ jobs:
 
     steps:
 
+    - name: checkout
+      uses: actions/checkout@v3
+      with:
+       repository: ${{ github.event.pull_request.head.repo.full_name }}
+       ref: ${{ github.event.pull_request.head.ref }}
+
     - name: Download a single artifact
       uses: actions/download-artifact@v3
       with:
@@ -129,7 +135,11 @@ jobs:
 
     - name: Unarchive Artifact
       run: |
-        tar -xvf ${{ env.DocC_Generated_Static_Site_Upload_Name }}.tar
+        mkdir ${{ env.DocC_Generated_Static_Site_Upload_Name }}
+        ls
+        echo "una"
+        tar -xf ${{ env.DocC_Generated_Static_Site_Upload_Name }}.tar -C ./${{ env.DocC_Generated_Static_Site_Upload_Name }}
+        echo "see"
         ls
 
     - name: Build Static Site With Jekyll
