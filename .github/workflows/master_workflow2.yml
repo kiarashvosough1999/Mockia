@@ -125,7 +125,7 @@ jobs:
       id-token: write
 
     env:
-      Jekyll_Build_Output_Directory: ${{ env.DocC_Generated_Static_Site_Upload_Name }}/_site
+      Jekyll_Build_Output_Directory: ./docC_generated_site_uploaded_name/_site
 
     environment:
       name: github-pages
@@ -153,13 +153,13 @@ jobs:
       uses: actions/jekyll-build-pages@v1
       with:
         source: ./${{ env.DocC_Generated_Static_Site_Upload_Name }}
-        destination: ./${{ env.Jekyll_Build_Output_Directory }}
+        destination: ${{ env.Jekyll_Build_Output_Directory }}
 
     - name: Upload Static Site Artifacts
       uses: actions/upload-pages-artifact@v0
       with:
         name: github-pages
-        path: ./${{ env.Jekyll_Build_Output_Directory }}
+        path: ${{ env.Jekyll_Build_Output_Directory }}
         retention-days: 1
 
     - name: Deploy
