@@ -125,7 +125,7 @@ jobs:
       id-token: write
 
     environment:
-      Jekyll_Build_Output_Directory: ${{ env.DocC_Generated_Static_Site_Upload_Name }}/_site
+      Jekyll_Build_Output_Directory: ./docC_generated_site_uploaded_name/_site
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
