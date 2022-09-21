@@ -116,10 +116,15 @@ jobs:
   build_deploy_site:
     needs: build_docC
     runs-on: ubuntu-latest
+
     permissions:
       pages: write
       contents: read
       id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
 
