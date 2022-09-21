@@ -8,8 +8,6 @@ on:
 env:
   DocC_Generated_Static_Site_Upload_Name: docC_generated_site_uploaded_name
   DocC_Generated_Static_Site_Upload_Zip_Name: docC_generated_site_uploaded_name.tar
-  Swift_SPM_Build_Path: .swiftspm
-  Jekyll_Static_Site_Destination_Path: ../docc_static_site/_site
 
 jobs:
 
@@ -61,7 +59,10 @@ jobs:
     permissions:
       contents: read
       pages: write
+
     env:
+      DocC_Archeive_Build_Success_Message: "${0;32}DocC Archeive Build Succeed\n${'\033[0m'}"
+      DocC_Static_Site_Generated_Success_Message: "${0;32}DocC Static Site Generated, Succeed\n${'\033[0m'}"
       DocC_Derived_Data_Path_Build: ./.doc_build
       DocC_Static_Site_Build_Ouptput_Path: "./docc_static_site"
 
@@ -93,13 +94,13 @@ jobs:
 
         xcodebuild docbuild -scheme $Package_Name -derivedDataPath $DocC_Derived_Data_Path_Build -destination 'platform=iOS Simulator,name=iPhone 13'
 
-        echo "DocC Archeive Build Succeed\n"
+        echo -e $DocC_Archeive_Build_Success_Message
 
         Docc_Generated_Archive_Path=$(find . -regex '.*/[^/]*.doccarchive')
 
         $DocC_Find_Executable_Path process-archive transform-for-static-hosting $Docc_Generated_Archive_Path --output-path $DocC_Static_Site_Build_Ouptput_Path --hosting-base-path $Package_Name
 
-        echo "DocC Static Site Generated, Succeed"
+        echo -e $DocC_Static_Site_Generated_Success_Message
 
     - name: Archive DocC Generated Site Artifact
       shell: bash
