@@ -129,12 +129,15 @@ jobs:
       with:
         name: ${{ env.DocC_Generated_Static_Site_Upload_Name }}
 
-  #   - name: Build Static Site With Jekyll
-  #     uses: actions/jekyll-build-pages@v1
-  #     with:
-  #       source: ./$DocC_Generated_Static_Site_Upload_Name
-  #       destination: $Jekyll_Static_Site_Destination_Path
-    
+    - name: Build Static Site With Jekyll
+      uses: actions/jekyll-build-pages@v1
+      with:
+        source: ./$DocC_Generated_Static_Site_Upload_Name
+        destination: ${{ env.Jekyll_Static_Site_Destination_Path }}
+
+    - name: Unarchive Artifact
+      run: |
+        ls
   #   - name: Upload Static Site Artifacts
   #     permissions:
   #       pages: write
