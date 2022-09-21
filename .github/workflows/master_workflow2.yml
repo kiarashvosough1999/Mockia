@@ -7,6 +7,7 @@ on:
 
 env:
   DocC_Generated_Static_Site_Upload_Name: docC_generated_site_uploaded_name
+  DocC_Generated_Static_Site_Upload_Zip_Name: docC_generated_site_uploaded_name.tar
   Swift_SPM_Build_Path: .swiftspm
   Jekyll_Static_Site_Destination_Path: ../docc_static_site/_site
 
@@ -100,20 +101,21 @@ jobs:
 
         echo "DocC Static Site Generated, Succeed"
 
-    - name: Archive DocC Artifact
+    - name: Archive DocC Generated Site Artifact
       shell: bash
       run: |
-        gtar --dereference --hard-dereference --directory $DocC_Static_Site_Build_Ouptput_Path -cvf "$RUNNER_TEMP/$DocC_Generated_Static_Site_Upload_Name.tar" --exclude=.git --exclude=.github .
+        gtar --dereference --hard-dereference --directory $DocC_Static_Site_Build_Ouptput_Path -cvf "$RUNNER_TEMP/$DocC_Generated_Static_Site_Upload_Zip_Name" --exclude=.git --exclude=.github .
 
     - name: Upload DocC Artifact
       uses: actions/upload-artifact@main
       with:
         name: ${{ env.DocC_Generated_Static_Site_Upload_Name }}
-        path: ${{ runner.temp }}/${{ env.DocC_Generated_Static_Site_Upload_Name }}.tar
+        path: ${{ runner.temp }}/${{ env.DocC_Generated_Static_Site_Upload_Zip_Name }}
         retention-days: 1
         if-no-files-found: error
   
   build_deploy_site:
+
     needs: build_docC
     runs-on: ubuntu-latest
 
@@ -123,6 +125,7 @@ jobs:
       id-token: write
 
     environment:
+      Jekyll_Build_Output_Directory: ${{ env.DocC_Generated_Static_Site_Upload_Name }}/_site
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
@@ -142,23 +145,19 @@ jobs:
     - name: Unarchive Artifact
       run: |
         mkdir ${{ env.DocC_Generated_Static_Site_Upload_Name }}
-        ls
-        echo "una"
-        tar -xf ${{ env.DocC_Generated_Static_Site_Upload_Name }}.tar -C ./${{ env.DocC_Generated_Static_Site_Upload_Name }}
-        echo "see"
-        ls
+        tar -xf ${{ env.DocC_Generated_Static_Site_Upload_Zip_Name }} -C ./${{ env.DocC_Generated_Static_Site_Upload_Name }}
 
     - name: Build Static Site With Jekyll
       uses: actions/jekyll-build-pages@v1
       with:
         source: ./${{ env.DocC_Generated_Static_Site_Upload_Name }}
-        destination: ./${{ env.DocC_Generated_Static_Site_Upload_Name }}/_site
+        destination: ./${{ env.Jekyll_Build_Output_Directory }}
 
     - name: Upload Static Site Artifacts
       uses: actions/upload-pages-artifact@v0
       with:
         name: github-pages
-        path: ./${{ env.DocC_Generated_Static_Site_Upload_Name }}/_site
+        path: ./${{ env.Jekyll_Build_Output_Directory }}
         retention-days: 1
 
     - name: Deploy
