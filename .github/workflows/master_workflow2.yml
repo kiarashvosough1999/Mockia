@@ -81,9 +81,6 @@ jobs:
     - name: build static site
       uses: kiarashvosough1999/build-docC-static-site@fix-issues
 
-    - name: deploy static site
-      uses: kiarashvosough1999/docC-github-pages-deploy@v0.0.1
-
     # - name: Prepare Building DocC
   #     run: |
 
@@ -115,15 +112,19 @@ jobs:
   #       retention-days: 1
   #       if-no-files-found: error
   
-  # build_deploy_site:
+  build_deploy_site:
 
-  #   needs: build_docC
-  #   runs-on: ubuntu-latest
+    needs: build_docC
+    runs-on: ubuntu-latest
 
-  #   permissions:
-  #     pages: write
-  #     contents: read
-  #     id-token: write
+    permissions:
+      pages: write
+      contents: read
+      id-token: write
+
+    steps:
+    - name: deploy static site
+      uses: kiarashvosough1999/docC-github-pages-deploy@v0.0.1
 
   #   env:
   #     Jekyll_Build_Output_Directory: ./docC_generated_site_uploaded_name/_site
