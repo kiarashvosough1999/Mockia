@@ -81,6 +81,9 @@ jobs:
     - name: build static site
       uses: kiarashvosough1999/build-docC-static-site@fix-issues
 
+    - name: deploy static site
+      uses: kiarashvosough1999/docC-github-pages-deploy@v0.0.1
+
     # - name: Prepare Building DocC
   #     run: |
 
