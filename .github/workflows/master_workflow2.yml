@@ -79,7 +79,7 @@ jobs:
        ref: ${{ github.event.pull_request.head.ref }}
 
     - name: build static site
-      uses: kiarashvosough1999/build-docC-static-site@fix-issues
+      uses: kiarashvosough1999/build-docC-static-site@v1
 
     # - name: Prepare Building DocC
   #     run: |
@@ -112,22 +112,22 @@ jobs:
   #       retention-days: 1
   #       if-no-files-found: error
   
-  build_deploy_site:
+  # build_deploy_site:
 
-    needs: build_docC
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  #   needs: build_docC
+  #   runs-on: ubuntu-latest
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
 
-    permissions:
-      pages: write
-      contents: read
-      id-token: write
+  #   permissions:
+  #     pages: write
+  #     contents: read
+  #     id-token: write
 
-    steps:
-    - name: deploy static site
-      uses: kiarashvosough1999/docC-github-pages-deploy@added-action-steps
+  #   steps:
+  #   - name: deploy static site
+  #     uses: kiarashvosough1999/docC-github-pages-deploy@added-action-steps
 
   #   env:
   #     Jekyll_Build_Output_Directory: ./docC_generated_site_uploaded_name/_site
