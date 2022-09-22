@@ -79,7 +79,7 @@ jobs:
        ref: ${{ github.event.pull_request.head.ref }}
 
     - name: build static site
-      uses: kiarashvosough1999/build-docC-static-site@v0.0.1
+      uses: kiarashvosough1999/build-docC-static-site@fix-issues
 
     # - name: Prepare Building DocC
   #     run: |
