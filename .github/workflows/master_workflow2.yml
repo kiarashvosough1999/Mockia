@@ -56,9 +56,9 @@ jobs:
   build_docC:
     # needs: test
     runs-on: macos-12
-    permissions:
-      contents: read
-      pages: write
+    # permissions:
+      # contents: read
+      # pages: write
 
     # env:
     #   DocC_Derived_Data_Path_Build: ./.doc_build
