@@ -127,7 +127,7 @@ jobs:
 
     steps:
     - name: deploy static site
-      uses: kiarashvosough1999/docC-github-pages-deploy@v0.0.1
+      uses: kiarashvosough1999/docC-github-pages-deploy@added-action-steps
 
   #   env:
   #     Jekyll_Build_Output_Directory: ./docC_generated_site_uploaded_name/_site
