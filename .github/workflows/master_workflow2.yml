@@ -116,6 +116,9 @@ jobs:
 
     needs: build_docC
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     permissions:
       pages: write
@@ -128,10 +131,6 @@ jobs:
 
   #   env:
   #     Jekyll_Build_Output_Directory: ./docC_generated_site_uploaded_name/_site
-
-  #   environment:
-  #     name: github-pages
-  #     url: ${{ steps.deployment.outputs.page_url }}
 
   #   steps:
 
